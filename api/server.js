@@ -7,7 +7,7 @@ app.get('/', (req, res) => {
         name: 'api',
         version: '1.0.0',
     });
-})
+});
 
 
 app.listen(8080);
