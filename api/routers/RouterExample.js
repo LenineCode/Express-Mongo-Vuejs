@@ -3,7 +3,7 @@ const router = require('express').Router();
 router.get('/', (req, res) => {
     res.status(200).json({
         code: 200,
-        type: "resource",
+        type: 'resource',
         example: {
             id: -1,
         },
