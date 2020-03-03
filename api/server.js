@@ -2,7 +2,7 @@ const express = require('express');
 
 const app = express();
 
-/* Routes and routers*/
+/* Routes and routers */
 
 app.get('/', (_req, res) => {
     res.json({
