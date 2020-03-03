@@ -1,9 +1,15 @@
 const express = require('express');
 const cors = require('cors');
 const bodyparser = require('body-parser');
+const mongoose = require('mongoose');
 
 /* Create app */
 const app = express();
+
+/* Init mongoose */
+mongoose.connect('mongodb://mongodb/database', {
+    useNewUrlParser: true,
+});
 
 /* Middlewares */
 app.use(cors());
