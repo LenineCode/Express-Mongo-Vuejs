@@ -1,6 +1,14 @@
 const express = require('express');
+const cors = require('cors');
+const bodyparser = require('body-parser');
 
+/* Create app */
 const app = express();
+
+/* Middlewares */
+app.use(cors());
+app.use(bodyparser.json());
+
 
 /* Routes and routers */
 
