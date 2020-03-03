@@ -9,5 +9,6 @@ app.get('/', (req, res) => {
     });
 });
 
+app.use('/example', require('./routers/RouterExample'));
 
 app.listen(8080);
