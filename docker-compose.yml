@@ -1,0 +1,55 @@
+version: '3'
+
+networks: 
+    MY_APP_NAME:
+        driver: bridge
+
+services: 
+    api:
+        image: node
+        container_name: MY_APP_NAME_api
+        user: "node"
+        working_dir: /app
+        volumes: 
+            - ./api:/app
+        command: "npm start"
+        networks: 
+            - "MY_APP_NAME"
+        ports: 
+            - "8080:8080"
+        links: 
+            - database:mongo
+    client:
+        image: node
+        container_name: MY_APP_NAME_client
+        user: "node"
+        working_dir: /app
+        volumes: 
+            - ./client:/app
+        command: "npm start"
+        networks: 
+            - "MY_APP_NAME"
+        ports: 
+            - "80:8080"
+    database:
+        image: mongo
+        container_name: MY_APP_NAME_database
+        restart: always
+        environment:
+            - MONGO_INITDB_DATABASE=database
+            - MONGO_INITDB_USERNAME=root
+            - MONGO_INITDB_PASSWORD=root
+        volumes:
+            - ./mongo-volume:/data/db
+        networks: 
+            - "MY_APP_NAME"
+        ports:
+            - "27017:27017"
+    dbadmin:
+        image: mongo-express
+        container_name: MY_APP_NAME_dbadmin
+        networks: 
+            - "MY_APP_NAME"
+        links: 
+            - database:mongo
+    
